@@ -1,9 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
@@ -21,7 +18,7 @@ module.exports = {
         port: 4200,
     },
     optimization : {
-        minimizer: [new TerserPlugin()],
+        minimizer: [],
         usedExports: true,
     },
     module: {
@@ -38,10 +35,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin, 'css-loader']
-            },
-            {
                 test: /\.s[ac]ss$/i,
                 use: [
                     'style-loader',
@@ -50,7 +43,7 @@ module.exports = {
                   ],
             },
             {
-                test: /\.(svg|png|ico|jpe?g|gif)$/i,
+                test: /\.(svg|png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'file-loader',
@@ -72,17 +65,16 @@ module.exports = {
         extensions: ['.js', '.scss', '.css'],
     },
     plugins: [
-        new Dotenv(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             chunks: ['app'],
+            favicon: './src/images/favicon.ico',
             template: './src/index.html',
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
             },
         }),
-        new MiniCssExtractPlugin(),
     ]
 };
