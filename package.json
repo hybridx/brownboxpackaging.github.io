@@ -4,7 +4,7 @@
   "description": "A website for Brownbox packaging",
   "main": "app.js",
   "scripts": {
-    "dev": "webpack-dev-server --open",
+    "start": "webpack-dev-server --open",
     "build": "webpack --mode production",
     "test": "jest --verbose"
   },
