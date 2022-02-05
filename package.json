@@ -1,7 +1,7 @@
 {
-  "name": "primeline-services",
+  "name": "brownboxpackaging",
   "version": "1.0.0",
-  "description": "A website for primeline services",
+  "description": "A website for Brownbox packaging",
   "main": "app.js",
   "scripts": {
     "dev": "webpack-dev-server --open",
